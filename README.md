@@ -1,1 +1,0 @@
-# sayasatpathi.github.io
