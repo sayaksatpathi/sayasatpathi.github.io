@@ -20,7 +20,7 @@
       --bg: #121212;
       --text: #eee;
       --card-bg: rgba(33, 33, 33, 0.8);
-      --header-footer-bg: #1c1c1c;
+      --header-footer-bg: #1e1e1e;
     }
 
     * {
@@ -37,9 +37,6 @@
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
       background-color: var(--header-footer-bg);
       display: flex;
       justify-content: space-between;
@@ -52,15 +49,14 @@
     }
 
     #logo {
-  font-size: 2.2rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #00bcd4, #0077ff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0;
-  transform: translateX(-50px);
-}
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00bcd4, #0077ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      transform: translateX(-50px);
+    }
 
     nav a {
       margin: 0 12px;
@@ -180,9 +176,10 @@
     }
 
     footer {
+      background-color: var(--header-footer-bg);
       padding: 30px 20px;
       text-align: center;
-      background-color: var(--header-footer-bg);
+      color: var(--text);
       border-top: 2px solid var(--accent);
       border-radius: 12px 12px 0 0;
     }
@@ -196,6 +193,39 @@
 
     .social-icons a:hover {
       color: var(--accent);
+    }
+
+    #collaboration {
+      padding: 50px 20px;
+      margin: 30px auto;
+      max-width: 900px;
+      background-color: var(--card-bg);
+      border: 2px solid transparent;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+      opacity: 0;
+    }
+
+    #collaboration:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 188, 212, 0.4);
+    }
+
+    #collaboration h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    #collaboration ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #collaboration ul li {
+      font-size: 1.2rem;
+      margin: 10px 0;
     }
 
     @media (max-width: 600px) {
@@ -279,12 +309,20 @@
     <p><strong>Languages:</strong> C, C++, Python</p>
   </section>
 
+  <section id="collaboration">
+    <h2>🤝 I'm Looking to Collaborate On</h2>
+    <ul>
+      <li>🏆 Hackathons and innovative tech workshops</li>
+      <li>🤖 Projects involving AI, ML, cloud, or LLM integrations</li>
+    </ul>
+  </section>
+
   <footer>
     <h3>Contact Me</h3>
     <p>Email: <a href="mailto:sayaksatpathi12@gmail.com">sayaksatpathi12@gmail.com</a></p>
     <div class="social-icons">
       <a href="https://github.com/sayaksatpathi" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/sayak-satpathi-34031b240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.linkedin.com/in/sayak-satpathi-34031b240" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://x.com/sayaksatpathi" target="_blank"><i class="fab fa-x-twitter"></i></a>
       <a href="https://instagram.com/sayaksatpathi" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
@@ -293,7 +331,6 @@
 
   <button id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
 
-  <!-- GSAP + ScrollTrigger + JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
@@ -315,19 +352,17 @@
     });
 
     gsap.utils.toArray("section").forEach(sec => {
-      if (!sec.classList.contains("hero")) {
-        gsap.to(sec, {
-          scrollTrigger: {
-            trigger: sec,
-            start: "top 80%",
-            toggleActions: "play none none none"
-          },
-          duration: 1,
-          y: -20,
-          opacity: 1,
-          ease: "power2.out"
-        });
-      }
+      gsap.to(sec, {
+        scrollTrigger: {
+          trigger: sec,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        duration: 1,
+        y: -20,
+        opacity: 1,
+        ease: "power2.out"
+      });
     });
 
     const topBtn = document.getElementById("backToTop");
@@ -339,6 +374,5 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
-
 </body>
 </html>
